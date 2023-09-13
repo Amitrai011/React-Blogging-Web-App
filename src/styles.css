@@ -1,0 +1,499 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+:root {
+    --app-color: #537fe7;
+}
+
+/* Register CSS */
+.register,
+.login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--app-color);
+}
+
+.register-container,
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: white;
+    width: 340px;
+    height: 415px;
+    border-radius: 10px;
+}
+
+.register-container img {
+    width: 28px;
+    height: 25px;
+}
+
+.register form,
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.register label,
+.login label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    margin-left: 48px;
+    cursor: pointer;
+}
+
+.haveAccount {
+    cursor: pointer;
+}
+
+.register p,
+.login p {
+    color: var(--app-color);
+}
+
+.register input,
+.login input {
+    border: none;
+    padding: 10px 2px;
+    border-bottom: 1px solid grey;
+    width: 70%;
+    background: none;
+}
+
+.register input:focus,
+.login input:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.register button,
+.login button {
+    border: none;
+    background-color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 70%;
+    color: white;
+    background-color: var(--app-color);
+    font-size: 16px;
+}
+
+.register-container h1 {
+    margin-top: 10px;
+    color: var(--app-color);
+}
+
+/* Login CSS */
+.login-container {
+    width: 320px;
+    height: 330px;
+}
+
+.register p a,
+.login p a {
+    text-decoration: none;
+    color: #0448a1;
+}
+
+h1 {
+    color: var(--app-color);
+}
+
+/* Home CSS */
+
+.home {
+    height: 100vh;
+    width: 100%;
+}
+
+.home img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.home .blog-img {
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+}
+
+.home .profile-pic {
+    border-radius: 50%;
+}
+
+.home .add-btn {
+    position: absolute;
+    bottom: 45px;
+    right: 45px;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: var(--app-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.home nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    position: sticky;
+    top: 0;
+}
+
+.home .left-nav,
+.right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+h3 {
+    color: var(--app-color);
+}
+
+.home nav .logout-btn,
+.create nav button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 13px;
+    cursor: pointer;
+    background-color: var(--app-color);
+    color: white;
+    font-size: 14px;
+}
+
+.home input {
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: rgb(226, 221, 221);
+}
+
+.home input:focus {
+    outline: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    background-image: none;
+}
+
+.home .nav-link p {
+    color: rgb(170, 168, 168);
+    margin-top: 10px;
+}
+
+.home .nav-link h2 {
+    margin-top: 20px;
+    color: black;
+    font-weight: bolder;
+}
+
+.home .middle-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home .blog-card {
+    width: 380px;
+    height: 400px;
+}
+
+.home .blog-card p {
+    color: rgb(170, 168, 168);
+    margin-top: 10px;
+}
+
+.home .blog-title button,
+.home .blog-title a {
+    background-image: url("https://cdn-icons-png.flaticon.com/128/3177/3177433.png");
+    height: 27px;
+    width: 27px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.home .blog-title a {
+    background-image: url("https://cdn-icons-png.flaticon.com/128/1828/1828270.png");
+    width: 27px;
+    height: 27px;
+}
+
+.home .top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.home .middle-container .top-container p {
+    color: rgb(170, 168, 168);
+    margin-top: 10px;
+    text-align: center;
+    width: 30vw;
+}
+
+.home #search-blog {
+    margin-top: 20px;
+    padding: 12px 22px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+}
+
+.home #search-blog::placeholder {
+    color: #b9b6b6;
+}
+
+.home .bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 9vh;
+    gap: 7vh;
+}
+
+.home .bottom-container .blog-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.home .edit-delete-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.home .heading {
+    color: var(--app-color);
+}
+
+/* Detail CSS */
+
+.detail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.detail .blog-image {
+    width: 100%;
+    height: 100%
+}
+
+.detail .blog-details p {
+    width: 100%;
+    letter-spacing: -0.003em;
+    font-size: 20px;
+    color: rgb(62, 56, 35);
+    font-weight: 400;
+    font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+    text-align: left;
+    margin-top: 2rem;
+    line-height: 30px;
+}
+
+.detail .blog-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    margin: 50px auto;
+}
+
+.detail nav,
+.create nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 16px;
+}
+
+.detail nav div,
+.create nav div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail nav p,
+.create nav p {
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: rgba(25, 25, 25, 1);
+}
+
+.detail nav img,
+.create nav img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.detail nav .profile-pic,
+.create nav .profile-pic {
+    border-radius: 50%;
+}
+
+.detail .blog-details h1 {
+    letter-spacing: -0.016em;
+    line-height: 40px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-bottom: 15px;
+}
+
+.detail .blog-details h4 {
+    color: rgb(181, 176, 176);
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-bottom: 15px;
+}
+
+/* Create CSS */
+
+.create {
+    width: 100%;
+    height: 100vh;
+}
+
+.create form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 50px;
+    margin-left: 150px;
+}
+
+.create form .title-input {
+    width: 50%;
+    border: none;
+    height: 50px;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: 42px;
+    color: rgba(0, 0, 0, .84);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.create form .title-input::placeholder {
+    color: #b3b3b1;
+}
+
+.create form .title-input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.create form textarea::placeholder {
+    color: #b3b3b1;
+}
+
+.create form textarea {
+    border: none;
+    resize: none;
+    margin-top: 20px;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    font-family: 'Times New Roman', Times, serif;
+    width: 60%;
+}
+
+.create form label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.create form img {
+    width: 40px;
+}
+
+@media (max-width: 768px) {
+    .home .middle-container .top-container p {
+        width: 74vw !important;
+    }
+
+    .detail .blog-details {
+        width: 85%;
+    }
+
+    .create form {
+        margin-left: 0;
+    }
+
+    .create form textarea {
+        width: 100% !important;
+    }
+
+    .create form .title-input {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .home .middle-container .top-container p {
+        width: 80%;
+    }
+
+    .detail .blog-details {
+        width: 85%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .detail .blog-details {
+        width: 85%;
+    }
+
+    .create form textarea {
+        width: 80%;
+    }
+
+    .create form .title-input {
+        width: 80%;
+    }
+}
