@@ -42,7 +42,7 @@ function Home() {
 
   function handleSearch() {
     const filterArray = blogArray.filter((blog) =>
-      blog.title.includes(searchText)
+      blog.title.toLowerCase().includes(searchText.toLowerCase())
     );
 
     setSearchArray(filterArray);
