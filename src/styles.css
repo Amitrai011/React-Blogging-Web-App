@@ -492,8 +492,8 @@ textarea:focus {
   height: 3rem;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid lightgray;
-  border-color: lightgray transparent lightgray transparent;
+  border: 6px solid var(--app-color);
+  border-color: var(--app-color) transparent var(--app-color) transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 
