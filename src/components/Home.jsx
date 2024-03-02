@@ -3,67 +3,62 @@ import { signOut } from "firebase/auth";
 import { User } from "../App";
 import { auth, db } from "../firebaseConfig";
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import DefaultLoader from "./DefaultLoader";
 
 function Home() {
   const user = useContext(User);
   const navigate = useNavigate();
 
+  const [loader, setLoader] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [blogArray, setBlogArray] = useState([]);
   const [searchArray, setSearchArray] = useState([]);
 
   async function getBlog() {
+    setLoader(true);
     const collName = collection(db, "blog");
-    const blogs = await getDocs(collName);
-    setBlogArray(
-      blogs.docs.map(function (blogObj) {
-        return { ...blogObj.data(), id: blogObj.id };
-      })
-    );
+    try {
+      const blogs = await getDocs(collName);
+      setBlogArray(
+        blogs.docs.map(function (blogObj) {
+          return { ...blogObj.data(), id: blogObj.id };
+        })
+      );
+      setSearchArray(
+        blogs.docs.map(function (blogObj) {
+          return { ...blogObj.data(), id: blogObj.id };
+        })
+      );
+      setLoader(false);
+    } catch {
+      setLoader(false);
+    }
   }
 
-  useEffect(
-    function () {
-      getBlog();
-    },
-    [searchText.length]
-  );
+  useEffect(() => {
+    getBlog();
+  }, []);
 
-  async function handleSearch() {
-    const blogCollection = collection(db, "blog");
-    const que = query(blogCollection, where("title", "==", searchText));
-    const querySnapshot = await getDocs(que);
-
-    setSearchArray(
-      querySnapshot.docs.map(function (blogItem) {
-        return { ...blogItem.data(), id: blogItem.id };
-      })
+  function handleSearch() {
+    const filterArray = blogArray.filter((blog) =>
+      blog.title.includes(searchText)
     );
-    setBlogArray(searchArray);
+
+    setSearchArray(filterArray);
   }
 
   function handleKey(event) {
-    if (event.code == "Enter") {
+    if (event.code === "Enter") {
       handleSearch();
     }
   }
 
   function handleSignOut() {
     signOut(auth)
-      .then(() => {
-        console.log("Successfully Signed Out");
-      })
+      .then(() => {})
       .catch((err) => {
-        alert(err.message);
+        alert("Logout error. Please retry");
       });
   }
 
@@ -75,10 +70,6 @@ function Home() {
     } catch (err) {
       alert("Error deleting blog.");
     }
-  }
-
-  async function handleEdit(id, obj) {
-    navigate("/create");
   }
 
   function shrinkContent(str) {
@@ -105,6 +96,9 @@ function Home() {
           <p>Transform Ideas into Stunning Blogs Instantly</p>
           <input
             onChange={(event) => {
+              if (event.target.value === "") {
+                getBlog();
+              }
               setSearchText(event.target.value);
             }}
             onKeyDown={handleKey}
@@ -113,13 +107,16 @@ function Home() {
             placeholder="Search Blog"
           />
         </div>
-        {blogArray.length === 0 && (
-          <div style={{ position: "absolute", top: "50%", left: "50%" }}>
+        {loader && (
+          <div style={{ position: "absolute", top: "50%" }}>
             <DefaultLoader />
           </div>
         )}
+        {!loader && searchArray.length === 0 && (
+          <h1 style={{ position: "absolute", top: "50%" }}>Not Found</h1>
+        )}
         <div className="bottom-container">
-          {blogArray.map(function (obj) {
+          {searchArray.map(function (obj) {
             return (
               <div className="blog-card" key={obj.id}>
                 <NavLink
